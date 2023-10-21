@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"
+    />
+
+    <!-- jQuery UI CSS -->
+    <link
+      href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap styling for Typeahead -->
+    <link
+      href="dist/css/tokenfield-typeahead.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <!-- Tokenfield CSS -->
+    <link
+      href="dist/css/bootstrap-tokenfield.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <!-- Docs CSS -->
+    <link
+      href="docs-assets/css/pygments-manni.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link href="docs-assets/css/docs.css" type="text/css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body class="bg-body-secondary">
+    <!-- header -->
+    <div class="d-flex justify-content-center bg-primary pt-2 pb-2">
+      <div>
+        <div class="icon icon-cog justify-content-center d-flex mt-2"></div>
+        <h1 class="text-light">UNDEVIATING</h1>
+      </div>
+    </div>
+    <!-- Signup success message -->
+    <div id="successAlert" class="d-none">Sign up Successfull</div>
+    <!-- signup form -->
+    <div class="container" id="loginContainer">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 offset-md-3 mb-5">
+          <div class="card border-0 rounded-2">
+            <!-- signup title -->
+            <div
+              class="card-title text-center p-3 bg-primary rounded-top-2"
+              id="logintitle"
+            >
+              <h2 class="text-light">Signup</h2>
+            </div>
+            <!-- signup form body -->
+            <div class="card-body">
+              <!-- alerts -->
+              <div class="d-none" role="alert" id="passwordMatchError">
+                Both passwords do not match
+              </div>
+              <div class="d-none" role="alert" id="passwordEmptyError">
+                Password cannot be empty and must follow the hint *
+              </div>
+              <div class="d-none" role="alert" id="roleAssignError">
+                Assign the roles
+              </div>
+              <form id="signupForm" class="needs-validation" novalidate>
+                <!-- name -->
+                <div class="form-group d-flex align-items-end">
+                  <label for="name" class="form-label p-1 h6 me-2">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control rounded-pill me-2"
+                    id="firstName"
+                    placeholder="First Name"
+                    required
+                  />
+                  <input
+                    type="text"
+                    class="form-control rounded-pill"
+                    id="lastName"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div id="firstnameRequiredError" class="d-none">
+                  Enter a first name it is a required field
+                </div>
+                <!-- username -->
+                <div class="form-group mt-2">
+                  <label for="email" class="form-label p-1 h6 me-2"
+                    >Username:
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control rounded-pill"
+                    id="email"
+                    placeholder="Enter username"
+                    required
+                  />
+                  <div id="emailFormatError" class="d-none">
+                    Enter proper username in email format: example@example.com
+                  </div>
+                </div>
+                <!-- phone -->
+                <div class="form-group mt-2">
+                  <label for="phone" class="form-label p-1 h6 me-2"
+                    >Phone:
+                  </label>
+                  <div class="col-12">
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="form-control rounded-pill"
+                      placeholder="Enter Phone number"
+                    />
+                  </div>
+                  <div id="phoneFormatError" class="d-none">
+                    Enter proper 10 digit phone number
+                  </div>
+                </div>
+                <!-- date of birth -->
+                <div class="form-group mt-2">
+                  <label for="dob" class="p-1 h6 me-2"> Date Of Birth: </label>
+                  <input
+                    name="dob"
+                    type="date"
+                    id="dob"
+                    class="form-control rounded-pill"
+                    placeholder="Enter name"
+                  />
+                  <div id="dobError" class="d-none">
+                    Date should be in and before 01/01/2020
+                  </div>
+                </div>
+                <!-- gender -->
+                <div class="form-group mt-2">
+                  <label for="gender" class="p-1 h6 me-2"> Gender: </label>
+                  <div class="d-flex align-items-baseline">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        value="Female"
+                        id="female"
+                      />
+                      <label class="form-check-label" for="female">
+                        Female
+                      </label>
+                    </div>
+                    <div class="form-check ms-3">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="male"
+                        value="Male"
+                        checked
+                      />
+                      <label class="form-check-label" for="male"> Male </label>
+                    </div>
+                  </div>
+                </div>
+                <!-- address -->
+                <div class="form-group mt-2">
+                  <label for="Address" class="form-label p-1 h6 me-2"
+                    >Address:
+                  </label>
+                  <textarea
+                    type="text"
+                    class="form-control rounded-4"
+                    id="address"
+                    placeholder="Enter Address"
+                    required
+                  ></textarea>
+                  <div id="addressRequiredError" class="d-none">
+                    Enter address it is a required field
+                  </div>
+                </div>
+                <!-- preffered skills -->
+                <div class="form-group mt-2">
+                  <label for="prefferedSkill" class="form-label p-1 h6"
+                    >Preffered Skills:</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control d-flex border-0"
+                      id="prefferedSkill"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <!-- preffered language -->
+                <div class="form-group mt-2">
+                  <label for="prefferedLanguage" class="form-label p-1 h6"
+                    >Preffered Language:</label
+                  >
+                  <select
+                    class="form-select rounded-pill"
+                    id="prefferedLanguage"
+                  ></select>
+                </div>
+                <!-- roles -->
+                <div class="form-group mt-2">
+                  <label for="role" class="p-1 h6 me-2"> Role: </label>
+                  <div class="d-flex align-items-baseline">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="flexRadioDefault50"
+                        id="flexCheckDefault3"
+                        onclick="checkboxAdmin()"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault3">
+                        Admin
+                      </label>
+                    </div>
+                    <div class="row mt-2 me-2 ms-1">
+                      <div class="col me-2 d-flex">
+                        <div>
+                          <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            id="adminRead"
+                            value="adminRead"
+                            aria-label="..."
+                            onclick="checkboxAdminRW()"
+                          />
+                        </div>
+                        <label>Read</label>
+                      </div>
+                      <div class="col me-2 d-flex">
+                        <div>
+                          <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            id="adminWrite"
+                            value="adminWrite"
+                            aria-label="..."
+                            onclick="checkboxAdminRW()"
+                          />
+                        </div>
+                        <label>Write</label>
+                      </div>
+                    </div>
+                    <div class="form-check ms-3">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="flexRadioDefault50"
+                        id="flexCheckDefault4"
+                        onclick="checkboxUser()"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault4">
+                        User
+                      </label>
+                    </div>
+                    <div class="row mt-2 me-2 ms-1">
+                      <div class="col me-2 d-flex">
+                        <div>
+                          <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            id="userRead"
+                            value="userRead"
+                            aria-label="..."
+                            onclick="checkboxUserRW()"
+                          />
+                        </div>
+                        <label>Read</label>
+                      </div>
+                      <div class="col me-2 d-flex">
+                        <div>
+                          <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            id="userWrite"
+                            value="userWrite"
+                            aria-label="..."
+                            onclick="checkboxUserRW()"
+                          />
+                        </div>
+                        <label>Write</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- password -->
+                <div class="form-group">
+                  <label for="password" class="p-1 h6 mt-2">Password</label>
+                  <input
+                    type="password"
+                    class="form-control rounded-pill"
+                    id="password"
+                    placeholder="Enter Password"
+                    required
+                  />
+                </div>
+                <!-- confirmpasscode -->
+                <div class="form-group">
+                  <label for="confirmPassword" class="p-1 h6 mt-2"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control rounded-pill"
+                    id="confirmPassword"
+                    placeholder="Enter Password again"
+                    required
+                  />
+                </div>
+                <!-- password hint -->
+                <div class="small m-2 mt-4 text-black">
+                  * Password must contain: 1 special character 1 upper & 1 lower
+                  case letter 1 number and minimun 8 characters
+                </div>
+                <!-- login page navigation -->
+                <div class="mt-2 d-flex justify-content-end me-2">
+                  <a href="/login.html" type="button" class="text-primary"
+                    >Login</a
+                  >
+                </div>
+                <!-- submit button -->
+                <div class="text-center mt-4">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="signupButton"
+                    onclick="signup()"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/signup.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script>
+      const input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+        preferredCountries: ["in", "us"],
+        utilsScript:
+          "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.9.1.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/ui/1.10.3/jquery-ui.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="dist/bootstrap-tokenfield.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/scrollspy.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/affix.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/typeahead.bundle.min.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/docs.min.js"
+      charset="UTF-8"
+    ></script>
+    <script>
+      $("#prefferedSkill").tokenfield({
+        autocomplete: {
+          source: programmingSkillList,
+          delay: 100,
+        },
+        showAutocompleteOnFocus: true,
+      });
+    </script>
+  </body>
+</html>

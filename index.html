@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icon CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <!-- jQuery CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+    />
+    <!-- jQuery UI CSS -->
+    <link
+      href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap styling for Typeahead -->
+    <link
+      href="dist/css/tokenfield-typeahead.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <!-- Tokenfield CSS -->
+    <link
+      href="dist/css/bootstrap-tokenfield.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <!-- Docs CSS -->
+    <link
+      href="docs-assets/css/pygments-manni.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="overflow-hidden">
+    <!-- Top fixed navigation bar -->
+    <div class="bg-white d-flex fixed-top m-0 mb-md-1 mt-md-1">
+      <!-- React Logo -->
+      <div class="me-2 ms-3 mt-3 mt-lg-1" style="cursor: pointer">
+        <a onclick="sidebar()"
+          ><img
+            src="/assests/homeIcon.png"
+            style="height: 2rem; width: 2rem"
+            class="mt-lg-2"
+        /></a>
+      </div>
+
+      <!-- Search bar -->
+      <div class="col me-3 mt-1 d-none d-md-inline">
+        <button
+          class="border rounded-pill p-2 d-flex ms-3 m-md-1 bg-secondary-subtle w-100 text-black-50"
+          type="button"
+          id="search"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <div class="col-2 d-inline-flex">
+            <i class="bi bi-search ms-1"></i>
+            <span class="ms-2">Search</span>
+          </div>
+          <div class="offset-8 col-2 d-flex justify-content-center">
+            <kbd class="bg-white rounded-2 pe-2 ps-2 text-black-50">Ctrl</kbd>
+            <kbd class="bg-white rounded-2 ms-2 pe-2 ps-2 text-black-50">K</kbd>
+            <!-- Ctrl + K -->
+          </div>
+        </button>
+      </div>
+
+      <!-- navigation buttons -->
+      <div
+        class="me-4 offset-3 offset-md-0 mt-2 mt-md-0 p-lg-1 col col-md-auto d-flex justify-content-end"
+      >
+        <button
+          class="btn btn-group-sm ms-1 me-1 rounded-pill bg-primary-subtle text-primary d-none d-lg-inline mt-1"
+          id="topButton"
+        >
+          Learn
+        </button>
+        <button
+          class="btn btn-group rounded-pill d-none d-lg-inline mt-1"
+          id="topButton"
+          onclick="location = 'references.html'"
+        >
+          Reference
+        </button>
+        <button
+          class="btn btn-group rounded-pill d-none d-lg-inline mt-1"
+          id="topButton"
+        >
+          Community
+        </button>
+        <button
+          class="btn btn-group rounded-pill d-none d-lg-inline mt-1"
+          id="topButton"
+        >
+          Blog
+        </button>
+        <a class="btn btn-group ms-3"
+          ><i class="bi bi-moon fs-4" style="color: black"></i
+        ></a>
+        <a
+          class="btn btn-group ms-3"
+          href="https://github.com/facebook/react/releases"
+          target="_blank"
+          style="cursor: pointer"
+          ><i class="bi bi-github fs-4" style="color: black"></i
+        ></a>
+      </div>
+    </div>
+
+    <!-- main body row -->
+    <div
+      class="row m-0 mt-md-3 mt-lg-0 pt-3"
+      style="position: absolute; top: 4%"
+    >
+      <!-- sidebar 30% -->
+      <div class="col-md-3 d-block col-12 p-1 mt-3" id="sidebar">
+        <!-- navigation links to main content -->
+        <div
+          style="height: 88vh"
+          class="d-flex flex-column flex-shrink-0 overflow-scroll"
+        >
+          <div id="list-example" class="list-group p-2" role="tablist">
+            <div class="m-3 fw-light mb-2 dropdown">Get Started</div>
+
+            <a
+              class="list-group-item list-group-item-action active border-0 rounded-end-4"
+              onclick="collapseSidebarMobileScreen()"
+              data-bs-toggle="pill"
+              href="#list-item-1"
+              >Quick Start
+            </a>
+
+            <!-- accordion installation -->
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item border-0" id="accordion1">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed rounded-end-4 fw-bolder"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="false"
+                    aria-controls="collapseOne"
+                    onclick="pillToggle()"
+                  >
+                    Installation
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body p-0">
+                    <div class="m-0">
+                      <a
+                        class="list-group-item list-group-item-action border-0 rounded-end-4"
+                        data-bs-toggle="pill"
+                        href="#list-item-3"
+                        onclick="pillToggleOff()"
+                        >Start a New React Project</a
+                      >
+                      <a
+                        class="list-group-item list-group-item-action border-0 rounded-end-4"
+                        data-bs-toggle="pill"
+                        href="#list-item-4"
+                        onclick="pillToggleOff()"
+                        >Add React to an Existing Project</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View Edit ViewAll Logout -->
+            <a
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalCenter"
+              class="list-group-item list-group-item-action border-0"
+              onclick="ViewUser()"
+              data-backdrop="static"
+              style="cursor: pointer"
+              id="viewUser"
+            >
+              View Profile</a
+            >
+            <a
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalCenter2"
+              class="list-group-item list-group-item-action border-0"
+              onclick="EditUser()"
+              data-backdrop="static"
+              style="cursor: pointer"
+              id="editUser"
+            >
+              Edit Profile
+            </a>
+            <a
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModalCenter3"
+              class="list-group-item list-group-item-action border-0"
+              onclick="ViewUserAll()"
+              data-backdrop="static"
+              style="cursor: pointer"
+              id="viewAllUser"
+            >
+              View All Profile</a
+            >
+            <a
+              class="list-group-item list-group-item-action border-0"
+              onclick="LogOut()"
+              style="cursor: pointer"
+              >Logout</a
+            >
+          </div>
+        </div>
+
+        <!-- feedback fixed-bottom -->
+        <div
+          class="fixed-bottom end-0 card shadow d-none d-lg-block col-3 m-2 p-1"
+        >
+          <div class="p-1 fs-6 fw-bolder" id="feedback">
+            Is this page useful ?
+            <button class="btn bg-light" onclick="feedback()">
+              <i class="bi bi-hand-thumbs-up"></i>
+            </button>
+            <button class="btn bg-light" onclick="feedback()">
+              <i class="bi bi-hand-thumbs-down"></i>
+            </button>
+          </div>
+          <div class="p-1 ms-2 fs-6 fw-bolder d-none" id="thankMessage">
+            Thank you for your feedback!
+          </div>
+        </div>
+      </div>
+
+      <!-- main content 70% -->
+      <div
+        class="col-9 p-4 pt-2 pb-5 my-3 py-5 pe-lg-0 ps-lg-1 pt-lg-3"
+        id="mainBody"
+        style="height: 100vh"
+      >
+        <div class="overflow-scroll h-100">
+          <div class="tab-content p-4">
+            <div id="list-item-1" class="container tab-pane active">
+              <div>
+                <a class="text-primary fw-bold">LEARN REACT ></a>
+                <h1 class="mt-2 mb-2">Quick Start</h1>
+                <h5 class="mt-3">
+                  Welcome to the React documentation! This page will give you an
+                  introduction to the 80% of React concepts that you will use on
+                  a daily basis.
+                </h5>
+                <div class="card p-4 bg-light mt-4">
+                  <h4>You will learn</h4>
+                  <ul>
+                    <li>How to create and nest components</li>
+                    <li>How to add markup and styles</li>
+                    <li>How to display data</li>
+                    <li>How to render conditions and lists</li>
+                    <li>How to respond to events and update the screen</li>
+                    <li>How to share data between components</li>
+                  </ul>
+                </div>
+                <h4 class="mt-4">Creating and nesting components</h4>
+                <div>
+                  React apps are made out of components. A component is a piece
+                  of the UI (user interface) that has its own logic and
+                  appearance. A component can be as small as a button, or as
+                  large as an entire page.
+                  <br /><br />
+                  React components are JavaScript functions that return markup:
+                </div>
+                <div class="card shadow rounded-4 p-3 pb-0 mb-1 mt-1">
+                  <pre>
+                    <code class="sp-pre-placeholder grow-[2]"><div class="cm-line "><span class="sp-syntax-keyword">function</span> <span class="sp-syntax-definition">MyButton</span><span class="sp-syntax-punctuation">(</span><span class="sp-syntax-punctuation">)</span> <span class="sp-syntax-punctuation">{</span><br></div><div class="cm-line ">  <span class="sp-syntax-keyword">return</span> <span class="sp-syntax-punctuation">(</span><br></div><div class="cm-line ">    <span class="sp-syntax-punctuation">&lt;</span><span class="sp-syntax-tag">button</span><span class="sp-syntax-punctuation">&gt;</span>I'm a button<span class="sp-syntax-punctuation">&lt;/</span><span class="sp-syntax-tag">button</span><span class="sp-syntax-punctuation">&gt;</span><br></div><div class="cm-line ">  <span class="sp-syntax-punctuation">)</span><span class="sp-syntax-punctuation">;</span><br></div><div class="cm-line "><span class="sp-syntax-punctuation">}</span></div></code>
+                  </pre>
+                </div>
+                <p class="whitespace-pre-wrap my-4">
+                  Now that you’ve declared
+                  <code
+                    dir="ltr"
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >MyButton</code
+                  >, you can nest it into another component:
+                </p>
+                <div>
+                  <div class="card shadow rounded-4 p-3 pb-0 mb-1 mt-1">
+                    <div>
+                      <div>
+                        <pre
+                          class="sp-cm sp-pristine sp-javascript flex align-start"
+                        ><code class="sp-pre-placeholder grow-[2]"><div class="cm-line "><span class="sp-syntax-keyword">export</span> <span class="sp-syntax-keyword">default</span> <span class="sp-syntax-keyword">function</span> <span class="sp-syntax-definition">MyApp</span><span class="sp-syntax-punctuation">(</span><span class="sp-syntax-punctuation">)</span> <span class="sp-syntax-punctuation">{</span><br></div><div class="cm-line ">  <span class="sp-syntax-keyword">return</span> <span class="sp-syntax-punctuation">(</span><br></div><div class="cm-line ">    <span class="sp-syntax-punctuation">&lt;</span><span class="sp-syntax-tag">div</span><span class="sp-syntax-punctuation">&gt;</span><br></div><div class="cm-line ">      <span class="sp-syntax-punctuation">&lt;</span><span class="sp-syntax-tag">h1</span><span class="sp-syntax-punctuation">&gt;</span>Welcome to my app<span class="sp-syntax-punctuation">&lt;/</span><span class="sp-syntax-tag">h1</span><span class="sp-syntax-punctuation">&gt;</span><br></div><div class="cm-line bg-github-highlight dark:bg-opacity-10">      <span class="sp-syntax-punctuation">&lt;</span><span class="sp-syntax-definition">MyButton</span> <span class="sp-syntax-punctuation">/&gt;</span><br></div><div class="cm-line ">    <span class="sp-syntax-punctuation">&lt;/</span><span class="sp-syntax-tag">div</span><span class="sp-syntax-punctuation">&gt;</span><br></div><div class="cm-line ">  <span class="sp-syntax-punctuation">)</span><span class="sp-syntax-punctuation">;</span><br></div><div class="cm-line "><span class="sp-syntax-punctuation">}</span></div></code></pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="whitespace-pre-wrap my-4">
+                  Notice that
+                  <code
+                    dir="ltr"
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >&lt;MyButton /&gt;</code
+                  >
+                  starts with a capital letter. That’s how you know it’s a React
+                  component. React component names must always start with a
+                  capital letter, while HTML tags must be lowercase.
+                </p>
+                <br />
+              </div>
+            </div>
+            <div id="list-item-2" class="container tab-pane fade">
+              <a class="text-primary fw-bold">LEARN REACT ></a>
+              <h1 class="mt-2 mb-2">Installation</h1>
+              <h5 class="mt-3">
+                React has been designed from the start for gradual adoption. You
+                can use as little or as much React as you need. Whether you want
+                to get a taste of React, add some interactivity to an HTML page,
+                or start a complex React-powered app, this section will help you
+                get started.
+              </h5>
+              <div class="card p-4 bg-light mt-4">
+                <h4>In this chapter</h4>
+                <ul>
+                  <li>How to start a new React project</li>
+                  <li>How to add React to an existing project</li>
+                  <li>How to set up your editor</li>
+                  <li>How to install React Developer Tools</li>
+                </ul>
+              </div>
+              <h4 class="mt-4">Try React</h4>
+              <div>
+                You don’t need to install anything to play with React. Try
+                editing this sandbox!
+              </div>
+              <div class="card shadow rounded-4 p-3 pb-0 mb-1 mt-1">
+                <div>
+                  <div class="cm-line">
+                    <span class="sp-syntax-keyword">function</span>
+                    <span class="sp-syntax-definition">Greeting</span
+                    ><span class="sp-syntax-punctuation">(</span
+                    ><span class="sp-syntax-punctuation">{</span>
+                    <span class="sp-syntax-property">name</span>
+                    <span class="sp-syntax-punctuation">}</span
+                    ><span class="sp-syntax-punctuation">)</span>
+                    <span class="sp-syntax-punctuation">{</span>
+                  </div>
+                  <div class="cm-line">
+                    <span class="sp-syntax-keyword">return</span>
+                    <span class="sp-syntax-punctuation">&lt;</span
+                    ><span class="sp-syntax-tag">h1</span
+                    ><span class="sp-syntax-punctuation">&gt;</span>Hello,
+                    <span class="sp-syntax-punctuation">{</span
+                    ><span class="sp-syntax-plain">name</span
+                    ><span class="sp-syntax-punctuation">}</span
+                    ><span class="sp-syntax-punctuation">&lt;/</span
+                    ><span class="sp-syntax-tag">h1</span
+                    ><span class="sp-syntax-punctuation">&gt;</span
+                    ><span class="sp-syntax-punctuation">;</span>
+                  </div>
+                  <div class="cm-line">
+                    <span class="sp-syntax-punctuation">}</span>
+                  </div>
+                  <div class="cm-line"><br /></div>
+                  <div class="cm-line">
+                    <span class="sp-syntax-keyword">export</span>
+                    <span class="sp-syntax-keyword">default</span>
+                    <span class="sp-syntax-keyword">function</span>
+                    <span class="sp-syntax-definition">App</span
+                    ><span class="sp-syntax-punctuation">(</span
+                    ><span class="sp-syntax-punctuation">)</span>
+                    <span class="sp-syntax-punctuation">{</span>
+                  </div>
+                  <div class="cm-line">
+                    <span class="sp-syntax-keyword">return</span>
+                    <span class="sp-syntax-punctuation">&lt;</span
+                    ><span class="sp-syntax-definition">Greeting</span>
+                    <span class="sp-syntax-property">name</span>=<span
+                      class="sp-syntax-string"
+                      >"world"</span
+                    >
+                    <span class="sp-syntax-punctuation">/&gt;</span>
+                  </div>
+                  <div class="cm-line">
+                    <span class="sp-syntax-punctuation">}</span>
+                  </div>
+                  <div class="cm-activeLine cm-line"><br /></div>
+                </div>
+              </div>
+              <div class="mt-3">
+                You can edit it directly or open it in a new tab by pressing the
+                “Fork” button in the upper right corner. <br />
+                <br />
+                Most pages in the React documentation contain sandboxes like
+                this. Outside of the React documentation, there are many online
+                sandboxes that support React: for example, CodeSandbox,
+                StackBlitz, or CodePen.
+              </div>
+              <br />
+            </div>
+            <div id="list-item-3" class="container tab-pane fade">
+              <a class="text-primary fw-bold">LEARN REACT > Installation ></a>
+              <h1 class="mt-2 mb-2">Start a New React Project</h1>
+              <h5 class="mt-3">
+                If you want to build a new app or a new website fully with
+                React, we recommend picking one of the React-powered frameworks
+                popular in the community. Frameworks provide features that most
+                apps and sites eventually need, including routing, data
+                fetching, and generating HTML.
+              </h5>
+              <div class="card p-4 bg-light mt-4">
+                <h3>Note:</h3>
+                <br />
+                You need to install Node.js for local development. You can also
+                choose to use Node.js in production, but you don’t have to. Many
+                React frameworks support export to a static HTML/CSS/JS folder.
+              </div>
+              <h4 class="mt-4">Production-grade React frameworks</h4>
+
+              <h5 class="mt-4">Remix</h5>
+              <div>
+                Remix is a full-stack React framework with nested routing. It
+                lets you break your app into nested parts that can load data in
+                parallel and refresh in response to the user actions. To create
+                a new Remix project, run:
+              </div>
+              <div class="bg-black text-white p-5 mt-2">npx create-remix</div>
+              <div>
+                If you’re new to Remix, check out the Remix blog tutorial
+                (short) and app tutorial (long).
+                <br />
+                <br />
+                Remix is maintained by Shopify. When you create a Remix project,
+                you need to pick your deployment target. You can deploy a Remix
+                app to any Node.js or serverless hosting by using or writing an
+                adapter.
+              </div>
+              <h5 class="mt-4">Gatsby</h5>
+              <div>
+                Gatsby is a React framework for fast CMS-backed websites. Its
+                rich plugin ecosystem and its GraphQL data layer simplify
+                integrating content, APIs, and services into one website. To
+                create a new Gatsby project, run:
+              </div>
+              <div class="bg-black text-white p-5 mt-2">npx create-gatsby</div>
+              <div>
+                If you’re new to Gatsby, check out the Gatsby tutorial.
+                <br />
+                <br />
+                Gatsby is maintained by Netlify. You can deploy a fully static
+                Gatsby site to any static hosting. If you opt into using
+                server-only features, make sure your hosting provider supports
+                them for Gatsby.
+              </div>
+              <h5 class="mt-4">Expo (for native apps)</h5>
+              <div>
+                Expo is a React framework that lets you create universal
+                Android, iOS, and web apps with truly native UIs. It provides an
+                SDK for React Native that makes the native parts easier to use.
+                To create a new Expo project, run:
+              </div>
+              <div class="bg-black text-white p-5 mt-2">
+                npx create-expo-app
+              </div>
+              <div>
+                If you’re new to Expo, check out the Expo tutorial.
+                <br />
+                <br />
+                Expo is maintained by Expo (the company). Building apps with
+                Expo is free, and you can submit them to the Google and Apple
+                app stores without restrictions. Expo additionally provides
+                opt-in paid cloud services.
+              </div>
+              <br />
+            </div>
+            <div id="list-item-4" class="container tab-pane fade">
+              <a class="text-primary fw-bold">LEARN REACT > Installation ></a>
+              <h1 class="mt-2 mb-2">Add React to an Existing Project</h1>
+              <h5 class="mt-3">
+                If you want to add some interactivity to your existing project,
+                you don’t have to rewrite it in React. Add React to your
+                existing stack, and render interactive React components
+                anywhere.
+              </h5>
+              <div class="card p-4 bg-light mt-4">
+                <h3>Note:</h3>
+                <br />
+                You need to install Node.js for local development. Although you
+                can try React online or with a simple HTML page, realistically
+                most JavaScript tooling you’ll want to use for development
+                requires Node.js.
+              </div>
+              <h4 class="mt-4">
+                Using React for an entire subroute of your existing website
+              </h4>
+              <div>
+                Let’s say you have an existing web app at example.com built with
+                another server technology (like Rails), and you want to
+                implement all routes starting with example.com/some-app/ fully
+                with React.
+                <br /><br />
+                Here’s how we recommend to set it up:
+                <br /><br />
+                <ol>
+                  <li>
+                    Build the React part of your app using one of the
+                    React-based frameworks.
+                  </li>
+                  <li>
+                    Specify /some-app as the base path in your framework’s
+                    configuration (here’s how: Next.js, Gatsby).
+                  </li>
+                  <li>
+                    Configure your server or a proxy so that all requests under
+                    /some-app/ are handled by your React app.
+                  </li>
+                </ol>
+
+                <br />This ensures the React part of your app can benefit from
+                the best practices baked into those frameworks.
+                <br />
+                <br />Many React-based frameworks are full-stack and let your
+                React app take advantage of the server. However, you can use the
+                same approach even if you can’t or don’t want to run JavaScript
+                on the server. In that case, serve the HTML/CSS/JS export (next
+                export output for Next.js, default for Gatsby) at /some-app/
+                instead.
+              </div>
+              <h4 class="mt-4">Using React for a part of your existing page</h4>
+              <div>
+                Let’s say you have an existing page built with another
+                technology (either a server one like Rails, or a client one like
+                Backbone), and you want to render interactive React components
+                somewhere on that page. That’s a common way to integrate
+                React—in fact, it’s how most React usage looked at Meta for many
+                years!
+                <br /><br />
+                You can do this in two steps:
+                <br /><br />
+                <ol>
+                  <li>
+                    Set up a JavaScript environment that lets you use the JSX
+                    syntax, split your code into modules with the import /
+                    export syntax, and use packages (for example, React) from
+                    the npm package registry.
+                  </li>
+                  <li>
+                    Render your React components where you want to see them on
+                    the page.
+                  </li>
+                </ol>
+                <br />
+                The exact approach depends on your existing page setup, so let’s
+                walk through some details.
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View all profile modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter3"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header d-block bg-primary">
+            <h2
+              class="modal-title d-flex justify-content-center text-light"
+              id="exampleModalLongTitle"
+            >
+              View All Profiles
+            </h2>
+          </div>
+          <div class="modal-body p-3 overflow-scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Date of Birth</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Language</th>
+                  <th scope="col">Skills</th>
+                  <th scope="col">Role</th>
+                </tr>
+              </thead>
+              <tbody id="allProfiles"></tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- search modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="height: 88vh">
+          <div class="modal-header border-0">
+            <div
+              class="border rounded-pill d-flex bg-secondary-subtle w-100 p-2"
+            >
+              <i class="bi bi-search ms-1"></i>
+              <input
+                type="search"
+                class="border-0 w-100 ms-2 bg-secondary-subtle rounded-pill"
+                placeholder="Search Docs"
+              />
+            </div>
+          </div>
+          <div class="modal-body text-center">
+            <div>No recent search</div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header d-block bg-primary">
+            <h2
+              class="modal-title d-flex justify-content-center text-light"
+              id="exampleModalLongTitle"
+            >
+              View Profile
+            </h2>
+          </div>
+          <div class="modal-body p-3">
+            <div class="d-flex justify-content-center">
+              <img
+                id="profileImg"
+                src="/assests/profile.png"
+                style="cursor: pointer; width: 25%"
+              />
+            </div>
+            <div class="mb-2 d-flex justify-content-center h5">
+              <div style="letter-spacing: 0.5px">Profile Picture</div>
+            </div>
+            <div style="letter-spacing: 0.5px">
+              <div class="row h5">
+                <div class="col-5">Name is</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="name" class=""></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Username is</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="username"></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Phone no. is</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="phonenum" class=""></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Date of birth is</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="dob" class=""></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Gender</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="gender" class=""></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Address</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="address" class=""></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Skills</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="skills" class=""></div>
+              </div>
+              <div class="row h5">
+                <div class="col-5">Language</div>
+                <div class="col-1">:</div>
+                <div class="col-4" id="language" class=""></div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter2"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header d-block bg-primary">
+            <h2
+              class="modal-title d-flex justify-content-center text-light"
+              id="exampleModalLongTitle"
+            >
+              Edit Profile
+            </h2>
+          </div>
+          <div class="modal-body p-4">
+            <div class="d-flex justify-content-center">
+              <img
+                id="profileImg"
+                src="/assests/profileEdit.png"
+                style="cursor: pointer; width: 25%"
+              />
+            </div>
+            <div class="mb-2 d-flex justify-content-center">
+              <strong class="text-black">Profile Picture</strong>
+            </div>
+            <!-- edit form -->
+            <form>
+              <!-- name -->
+              <div class="form-group mt-2">
+                <label for="name" class="p-1 h6"> Name </label>
+                <div class="d-flex">
+                  <input
+                    name="name"
+                    type="text"
+                    id="nameEdit"
+                    class="form-control rounded-pill"
+                    placeholder="Enter firstname"
+                  />
+                  <input
+                    name="lastname"
+                    type="text"
+                    id="lastnameEdit"
+                    class="form-control rounded-pill ms-2"
+                    placeholder="Enter lastname"
+                  />
+                </div>
+                <div id="6" class="d-none">
+                  Enter a firstname it is a required field
+                </div>
+              </div>
+              <!-- username -->
+              <div class="form-group mt-2">
+                <label for="usernameEdit" class="p-1 h6 mt-2"> Username </label>
+                <input
+                  name="usernameEdit"
+                  type="text"
+                  id="usernameEdit"
+                  class="form-control rounded-pill"
+                  placeholder="Enter username"
+                />
+                <div id="2" class="d-none">
+                  Enter proper email formated username example@example.com
+                </div>
+              </div>
+              <!-- phone -->
+              <div class="form-group mt-2">
+                <label for="phoneEdit" class="p-1 h6 mt-2"> Phone </label>
+                <input
+                  name="phoneEdit"
+                  type="number"
+                  id="phoneEdit"
+                  class="form-control rounded-pill"
+                  placeholder="Enter name"
+                />
+                <div id="1" class="d-none">
+                  Enter proper 10 digit phone number
+                </div>
+              </div>
+              <!-- dob -->
+              <div class="form-group mt-2">
+                <label for="dobEdit" class="p-1 h6 mt-2"> Date Of Birth </label>
+                <input
+                  name="dobEdit"
+                  type="date"
+                  id="dobEdit"
+                  max="2020/01/01"
+                  class="form-control rounded-pill"
+                  placeholder="Enter name"
+                />
+                <div id="0" class="d-none">
+                  Date should be in and before 01/01/2020
+                </div>
+              </div>
+              <!-- address -->
+              <div class="form-group mt-2">
+                <label for="Address" class="form-label p-1 h6 me-2"
+                  >Address:
+                </label>
+                <textarea
+                  type="number"
+                  class="form-control rounded-4"
+                  id="addressEdit"
+                  placeholder="Enter Address"
+                  required
+                ></textarea>
+                <div id="5" class="d-none">
+                  Enter address it is a required field
+                </div>
+              </div>
+              <!-- preffered skill -->
+              <div class="form-group mt-2">
+                <label for="prefferedSkill" class="form-label p-1 h6"
+                  >Preffered Skills:</label
+                >
+                <input
+                  type="text"
+                  class="form-control d-flex border-0"
+                  id="prefferedSkill"
+                  value=""
+                />
+              </div>
+              <!-- preffered language -->
+              <div class="form-group mt-2">
+                <label for="prefferedLanguage" class="form-label p-1 h6"
+                  >Preffered Language:</label
+                >
+                <select
+                  class="form-select rounded-pill"
+                  id="prefferedLanguage"
+                ></select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="closeButtons()"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="EditDetails()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js"></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.9.1.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/ui/1.10.3/jquery-ui.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="dist/bootstrap-tokenfield.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/scrollspy.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/affix.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/typeahead.bundle.min.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="docs-assets/js/docs.min.js"
+      charset="UTF-8"
+    ></script>
+  </body>
+</html>

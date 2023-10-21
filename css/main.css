@@ -1,0 +1,73 @@
+/* Main CSS file to provide uniform styling to every web page
+
+Provides CSS to 
+  -login.html 
+  -signup.html
+  -index.html
+  -reference.html
+
+Some bootstrap and jQuery CSS classes are also overridden in this CSS file */
+
+input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#topButton:hover {
+  background-color: #c9c6c6;
+}
+
+#loginContainer {
+  margin-top: 3em;
+}
+
+:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.list-group-item.active,
+.accordion-button:not(.collapsed) {
+  background: #e1f5fe;
+  color: #0277bd;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.iti {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.iti__selected-flag {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 6px 0 8px;
+  border-radius: 50px;
+}
+
+.tokenfield {
+  border-radius: 35px;
+}
+
+.tokenfield .token {
+  height: 1.75em;
+  border-radius: 25px;
+}
+
+#ui-id-1 {
+  z-index: 2000;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
